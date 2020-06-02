@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Writer
+namespace Contracts
 {
-    public class Writer
+   public class Poruka
     {
         private CodeType code;
 
@@ -23,11 +23,11 @@ namespace Writer
             set { vrijednost = value; }
         }
 
-        public Writer()
+        public Poruka()
         {
         }
 
-        public Writer(CodeType code, int vrijednost)
+        public Poruka(CodeType code, int vrijednost)
         {
             Code = code;
             Vrijednost = vrijednost;

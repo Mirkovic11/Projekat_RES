@@ -61,7 +61,7 @@ namespace Writer
             string trenutni = Environment.CurrentDirectory;
             string trenutni2 = Directory.GetParent(trenutni).Parent.FullName;
 
-            List<Writer> writers = CitajIzDatoteke.UcitajVrijednosti(trenutni2 + "/bin/Debug/podaci" + opcija + ".txt");
+            List<Poruka> writers = CitajIzDatoteke.UcitajVrijednosti(trenutni2 + "/bin/Debug/podaci" + opcija + ".txt");
 
  //--------------------Otvaranje konekcije ka Sender-u---------------------------
             string adresa = "net.tcp://localhost:6000/IPorukaOdWritera";
@@ -71,7 +71,7 @@ namespace Writer
             IPorukaOdWritera proxy = kanal .CreateChannel();
 //------------------------------------------------------------------------------------------------
 
-          foreach(Writer w in writers) //otkomentarisati kad se uradi konekcija na sender-u
+          foreach(Poruka w in writers) //otkomentarisati kad se uradi konekcija na sender-u
             {
                 proxy.PrimiPorukuOdWritera(w.Code+";"+ w.Vrijednost);
                 Thread.Sleep(2000);

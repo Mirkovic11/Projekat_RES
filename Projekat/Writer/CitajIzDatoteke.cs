@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Contracts;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace Writer
 {
     public class CitajIzDatoteke
     {
-        public static List<Writer> UcitajVrijednosti(string path)
+        public static List<Poruka> UcitajVrijednosti(string path)
         {
-            List<Writer> values = new List<Writer>();
+            List<Poruka> values = new List<Poruka>();
             FileStream stream = new FileStream(path, FileMode.Open);
             StreamReader sr = new StreamReader(stream);
             string line = "";
@@ -20,7 +21,7 @@ namespace Writer
             {
                 string[] tokens = line.Split(';');
 
-                Writer cv = new Writer((CodeType)Enum.Parse(typeof(CodeType), tokens[0]), Int32.Parse(tokens[1]));
+                Poruka cv = new Poruka((CodeType)Enum.Parse(typeof(CodeType), tokens[0]), Int32.Parse(tokens[1]));
                 values.Add(cv);
             }
             sr.Close();
