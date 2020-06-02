@@ -71,11 +71,13 @@ namespace Writer
             IPorukaOdWritera proxy = kanal .CreateChannel();
 //------------------------------------------------------------------------------------------------
 
-           /* foreach(Writer w in writers) //otkomentarisati kad se uradi konekcija na sender-u
+          foreach(Writer w in writers) //otkomentarisati kad se uradi konekcija na sender-u
             {
                 proxy.PrimiPorukuOdWritera(w.Code+";"+ w.Vrijednost);
                 Thread.Sleep(2000);
-            }*/
+            }
+            Console.WriteLine("Slanje podataka je uspjesno zavrseno.");
+            Console.WriteLine("Pritisnite bilo koji taster da biste dalje nastavili.");
 
             /* foreach (var writer in writers)
               {
