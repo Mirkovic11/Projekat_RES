@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Cont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplicatorSender", "ReplicatorSender\ReplicatorSender.csproj", "{44A80BAB-2F65-4589-BB91-D760F9E90FFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplicatorReceiver", "ReplicatorReceiver\ReplicatorReceiver.csproj", "{BDEEEAB0-43E7-4AC5-B63A-13F4F2BF53B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{44A80BAB-2F65-4589-BB91-D760F9E90FFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44A80BAB-2F65-4589-BB91-D760F9E90FFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44A80BAB-2F65-4589-BB91-D760F9E90FFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDEEEAB0-43E7-4AC5-B63A-13F4F2BF53B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDEEEAB0-43E7-4AC5-B63A-13F4F2BF53B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDEEEAB0-43E7-4AC5-B63A-13F4F2BF53B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDEEEAB0-43E7-4AC5-B63A-13F4F2BF53B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
