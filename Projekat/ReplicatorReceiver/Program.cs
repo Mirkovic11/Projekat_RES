@@ -25,6 +25,12 @@ namespace ReplicatorReceiver
                 Console.ReadKey();
                 host.Close();
             }
+
+            string adresa = "net.tcp://localhost:6001/IPorukaOdWritera";
+            NetTcpBinding binding1 = new NetTcpBinding();
+
+            ChannelFactory<IPorukaOdWritera> kanal = new ChannelFactory<IPorukaOdWritera>(binding1, adresa);
+            IPorukaOdWritera proxy = kanal.CreateChannel();
         }
     }
 }

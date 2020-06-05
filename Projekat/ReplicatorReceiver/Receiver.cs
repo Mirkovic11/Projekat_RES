@@ -11,7 +11,7 @@ namespace ReplicatorReceiver
     {
         public void PrimiPorukuOdWritera(string poruka)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Primio poruku: " + poruka);
         }
     }
 }
