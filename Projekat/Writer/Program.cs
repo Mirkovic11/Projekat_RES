@@ -39,6 +39,7 @@ namespace Writer
                         PaljenjeNovogWritera();
                         break;
                     case 2:
+                        GasenjePostojecegWritera();
                         break;
                     case 3:
                         SlanjePodataka();
@@ -96,6 +97,21 @@ namespace Writer
         {
             string trenutni = Environment.CurrentDirectory;
             Process.Start(trenutni+"/Writer.exe");
+        }
+
+        public static void GasenjePostojecegWritera()
+        {
+            Process[] listaProcesa = Process.GetProcessesByName("Writer");
+            int ugasi = listaProcesa.Count()-1;
+
+            int id = listaProcesa[ugasi].Id;
+            foreach (Process proces in listaProcesa)
+            {
+                if(proces.Id == id)
+                {
+                    proces.Kill();
+                }
+            }
         }
     }
 }
