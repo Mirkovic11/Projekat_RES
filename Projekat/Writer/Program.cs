@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Contracts;
 using System.ServiceModel;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Writer
 {
@@ -35,6 +36,7 @@ namespace Writer
                 {
                   
                     case 1:
+                        PaljenjeNovogWritera();
                         break;
                     case 2:
                         break;
@@ -70,7 +72,6 @@ namespace Writer
             ChannelFactory<IPorukaOdWritera> kanal = new ChannelFactory<IPorukaOdWritera>(binding, adresa);
             IPorukaOdWritera proxy = kanal .CreateChannel();
 //------------------------------------------------------------------------------------------------
-
           foreach(Poruka w in writers) //otkomentarisati kad se uradi konekcija na sender-u
             {
                 proxy.PrimiPorukuOdWritera(w.Code+";"+ w.Vrijednost);
@@ -79,10 +80,6 @@ namespace Writer
             Console.WriteLine("Slanje podataka je uspjesno zavrseno.");
             Console.WriteLine("Pritisnite bilo koji taster da biste dalje nastavili.");
 
-            /* foreach (var writer in writers)
-              {
-                  Console.WriteLine(writer.Code + ";" + writer.Vrijednost);
-              }*/
             Console.ReadLine();
         }
         public static void IspisiMeni()
@@ -93,6 +90,12 @@ namespace Writer
             Console.WriteLine("3. Slanje podataka");
             Console.WriteLine("0. Izlaz");
 
+        }
+
+        public static void PaljenjeNovogWritera()
+        {
+            string trenutni = Environment.CurrentDirectory;
+            Process.Start(trenutni+"/Writer.exe");
         }
     }
 }
