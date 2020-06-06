@@ -14,9 +14,9 @@ namespace ReplicatorReceiver
         {
             using (ServiceHost host = new ServiceHost(typeof(Receiver)))
             {
-                string address = "net.tcp://localhost:6001/IPorukaOdWritera";
+                string address = "net.tcp://localhost:6001/IPosaljiPorukuRR";
                 NetTcpBinding binding = new NetTcpBinding();
-                host.AddServiceEndpoint(typeof(IPorukaOdWritera), binding, address);
+                host.AddServiceEndpoint(typeof(IPosaljiPorukuRR), binding, address);
 
                 host.Open();
                 Receiver receiver = new Receiver();
@@ -26,11 +26,7 @@ namespace ReplicatorReceiver
                 host.Close();
             }
 
-            string adresa = "net.tcp://localhost:6001/IPorukaOdWritera";
-            NetTcpBinding binding1 = new NetTcpBinding();
-
-            ChannelFactory<IPorukaOdWritera> kanal = new ChannelFactory<IPorukaOdWritera>(binding1, adresa);
-            IPorukaOdWritera proxy = kanal.CreateChannel();
+           
         }
     }
 }

@@ -32,6 +32,21 @@ namespace ReplicatorSender
         {
             baferLista = new List<Poruka>();
         }
-              
+
+        public int brojac = 0;
+        public Poruka ProcitajPoruku()
+        {
+            Poruka poruka = new Poruka();
+            poruka = null;
+
+            if (brojac < baferLista.Count())
+            {
+                poruka = baferLista[brojac];
+                brojac++;
+               // return poruka;
+            }
+
+            return poruka;
+        }
     }
 }

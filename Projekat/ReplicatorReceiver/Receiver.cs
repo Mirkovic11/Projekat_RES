@@ -7,11 +7,11 @@ using Contracts;
 
 namespace ReplicatorReceiver
 {
-    public class Receiver : IPorukaOdWritera
+    public class Receiver : IPosaljiPorukuRR
     {
-        public void PrimiPorukuOdWritera(string poruka)
+        public void PosaljiPorukuRR(Poruka poruka)
         {
-            Console.WriteLine("Primio poruku: " + poruka);
+            Console.WriteLine("Primio poruku: " + poruka.Code+";"+poruka.Vrijednost);
         }
     }
 }

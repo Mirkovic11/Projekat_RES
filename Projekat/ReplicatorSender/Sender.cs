@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Contracts;
 using System.ServiceModel;
+using System.Threading;
 
 namespace ReplicatorSender
 {
@@ -27,9 +28,10 @@ namespace ReplicatorSender
                 Console.WriteLine(p.Code+";"+p.Vrijednost);
             }
 
-        
-         
-             // Console.WriteLine(" Poslao poruku RR: " + poruka);
+       
+
+
+            // Console.WriteLine(" Poslao poruku RR: " + poruka);
         }
     }
 }
