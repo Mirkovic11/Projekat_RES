@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="CodeType.cs" />
     <Compile Include="IPorukaOdWritera.cs" />
+    <Compile Include="IPosaljiPorukuRR.cs" />
     <Compile Include="Poruka.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
