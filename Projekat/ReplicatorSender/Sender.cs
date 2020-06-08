@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Contracts;
 using System.ServiceModel;
 using System.Threading;
+using Logger;
 
 namespace ReplicatorSender
 {
@@ -27,6 +28,9 @@ namespace ReplicatorSender
             {
                 Console.WriteLine(p.Code+";"+p.Vrijednost);
             }
+
+           LoggerFunkcije.LoggerUpisiUDatotekuPoruku(por);
+           
 
        
 

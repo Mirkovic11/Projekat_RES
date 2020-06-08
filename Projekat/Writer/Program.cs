@@ -58,9 +58,8 @@ namespace Writer
         static void SlanjePodataka()
         {
             Console.WriteLine("Unesite putanju tekstualne datoteke iz koje zelite ucitati vrijednosti: ");
-
-            string opcija = Console.ReadLine();
-
+            int opcija;
+            opcija = Int32.Parse(Console.ReadLine());
             string trenutni = Environment.CurrentDirectory;
             string trenutni2 = Directory.GetParent(trenutni).Parent.FullName;
 

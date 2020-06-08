@@ -57,6 +57,10 @@
       <Project>{dfe15850-d54a-4e92-9a05-e5be465971a1}</Project>
       <Name>Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{5416ba3f-a771-4715-a3f8-3ee5f32242dd}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
