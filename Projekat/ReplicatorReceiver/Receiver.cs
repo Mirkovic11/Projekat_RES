@@ -5,6 +5,8 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using Contracts;
+using Logger;
+
 
 namespace ReplicatorReceiver
 {
@@ -23,6 +25,7 @@ namespace ReplicatorReceiver
         int brojac = 0;
         public void PosaljiPorukuRR(Poruka poruka)
         {
+
             List<Poruka> por = new List<Poruka>();
             por.Add(poruka);
             HistoricalCollection hc = new HistoricalCollection(por);
@@ -361,6 +364,12 @@ namespace ReplicatorReceiver
                     kanal.Close();
                 }
             }
+
+            Console.WriteLine("Primio poruku: " + poruka.Code+";"+poruka.Vrijednost);
+
+            LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
+
+
         }
     }
 }

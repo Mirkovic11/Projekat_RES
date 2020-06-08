@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ServiceModel;
 using Contracts;
 using System.Threading;
+using System.IO;
 
 namespace ReplicatorSender
 {
@@ -13,9 +14,12 @@ namespace ReplicatorSender
     {
         static void Main(string[] args)
         {
-
+            
             using (ServiceHost host = new ServiceHost(typeof(Sender)))
             {
+
+                Logger.LoggerFunkcije.BrisanjeLoggerDatoteke();
+
                 string address = "net.tcp://localhost:6000/IPorukaOdWritera";
                 NetTcpBinding binding = new NetTcpBinding();
                 host.AddServiceEndpoint(typeof(IPorukaOdWritera), binding, address);
