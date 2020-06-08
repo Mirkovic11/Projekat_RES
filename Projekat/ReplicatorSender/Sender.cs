@@ -21,6 +21,7 @@ namespace ReplicatorSender
             Poruka por = new Poruka((CodeType)Enum.Parse(typeof(CodeType), tokens[0]), Int32.Parse(tokens[1]));
 
             //Bafer b = new Bafer();
+
             Bafer.GetInstance().DodajPoruku(por);
             Console.WriteLine("Uspjesno upisana poruka");
 

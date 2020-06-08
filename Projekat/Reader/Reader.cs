@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Contracts;
+using Logger;
 namespace Reader
 {
     public class Reader : IPosaljiDS1
@@ -14,7 +15,8 @@ namespace Reader
             foreach (Poruka p in cd.HCollection.NizPoruka)
             {
                 Console.WriteLine(p.Code + ";vrijednost" + p.Vrijednost);
-            }     
+            }
+            Logger.LoggerFunkcije.LoggerUpisiUDatotekuPorukuRRR(cd);
 
         }
     }
