@@ -45,7 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeType.cs" />
+    <Compile Include="CollectionDescription.cs" />
+    <Compile Include="EnumDataSet.cs" />
+    <Compile Include="HistoricalCollection.cs" />
     <Compile Include="IPorukaOdWritera.cs" />
+    <Compile Include="IPosaljiDS1.cs" />
     <Compile Include="IPosaljiPorukuRR.cs" />
     <Compile Include="Poruka.cs" />
     <Compile Include="Program.cs" />

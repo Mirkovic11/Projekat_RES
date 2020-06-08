@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Contracts;
 
-namespace ReplicatorReceiver
+
+namespace Contracts
 {
     public class HistoricalCollection
     {
@@ -14,7 +14,7 @@ namespace ReplicatorReceiver
 
         public HistoricalCollection()
         {
-            List<Poruka> nizPoruka = new List<Poruka>();
+            //List<Poruka> nizPoruka = new List<Poruka>();
         }
 
         public HistoricalCollection(List<Poruka> nizPoruka)

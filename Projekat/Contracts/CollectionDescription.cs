@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReplicatorReceiver
+
+namespace Contracts
 {
     public class CollectionDescription
     {
@@ -16,9 +17,9 @@ namespace ReplicatorReceiver
             set { id = value; }
         }
 
-        private string dataset;
+        private EnumDataSet dataset;
 
-        public string Dataset
+        public EnumDataSet Dataset
         {
             get { return dataset; }
             set { dataset = value; }
@@ -39,7 +40,7 @@ namespace ReplicatorReceiver
             HCollection = new HistoricalCollection();
         }
 
-        public CollectionDescription(int id, string dataset, HistoricalCollection hCollection)
+        public CollectionDescription(int id, EnumDataSet dataset, HistoricalCollection hCollection)
         {
             Id = id;
             Dataset = dataset;
