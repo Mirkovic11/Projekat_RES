@@ -112,6 +112,7 @@ namespace ReplicatorReceiver
 
 
                     CollectionDescription cd = new CollectionDescription(++brojac, EnumDataSet.DataSet1, hc);
+                    LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
 
                     proxy.PosaljiDS1(cd);
 
@@ -145,12 +146,14 @@ namespace ReplicatorReceiver
 
                     CollectionDescription cd = new CollectionDescription(++brojac, EnumDataSet.DataSet1, hc);
 
+                    LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
 
                     proxy.PosaljiDS1(cd);
 
                     kanal.Close();
                 }
             }
+            Console.WriteLine("Primio poruku: " + poruka.Code + ";" + poruka.Vrijednost);
 
         }
         public void PosaljiDS2(Poruka poruka)
@@ -183,6 +186,7 @@ namespace ReplicatorReceiver
 
 
                     CollectionDescription cd = new CollectionDescription(++brojac, EnumDataSet.DataSet2, hc);
+                    LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
 
                     proxy.PosaljiDS1(cd);
 
@@ -215,6 +219,7 @@ namespace ReplicatorReceiver
                     }
 
                     CollectionDescription cd = new CollectionDescription(++brojac, EnumDataSet.DataSet2, hc);
+                    LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
 
 
                     proxy.PosaljiDS1(cd);
@@ -223,6 +228,9 @@ namespace ReplicatorReceiver
                 }
             }
 
+            Console.WriteLine("Primio poruku: " + poruka.Code + ";" + poruka.Vrijednost);
+
+           
         }
         public void PosaljiDS3(Poruka poruka)
         {
@@ -254,6 +262,7 @@ namespace ReplicatorReceiver
 
 
                     CollectionDescription cd = new CollectionDescription(++brojac, EnumDataSet.DataSet3, hc);
+                    LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
 
                     proxy.PosaljiDS1(cd);
 
@@ -287,12 +296,16 @@ namespace ReplicatorReceiver
 
                     CollectionDescription cd = new CollectionDescription(++brojac, EnumDataSet.DataSet3, hc);
 
+                    LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
 
                     proxy.PosaljiDS1(cd);
 
                     kanal.Close();
                 }
             }
+            Console.WriteLine("Primio poruku: " + poruka.Code + ";" + poruka.Vrijednost);
+
+            
 
         }
         public void PosaljiDS4(Poruka poruka)
@@ -325,6 +338,7 @@ namespace ReplicatorReceiver
 
 
                     CollectionDescription cd = new CollectionDescription(++brojac, EnumDataSet.DataSet4, hc);
+                    LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
 
                     proxy.PosaljiDS1(cd);
 
@@ -358,6 +372,7 @@ namespace ReplicatorReceiver
 
                     CollectionDescription cd = new CollectionDescription(++brojac, EnumDataSet.DataSet1, hc);
 
+                    LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
 
                     proxy.PosaljiDS1(cd);
 
@@ -367,7 +382,7 @@ namespace ReplicatorReceiver
 
             Console.WriteLine("Primio poruku: " + poruka.Code+";"+poruka.Vrijednost);
 
-            LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
+            
 
 
         }
