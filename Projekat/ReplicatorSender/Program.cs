@@ -33,7 +33,7 @@ namespace ReplicatorSender
 
                 ChannelFactory<IPosaljiPorukuRR> kanal = new ChannelFactory<IPosaljiPorukuRR>(binding1, adresa);
                 IPosaljiPorukuRR proxy = kanal.CreateChannel();
-
+               
                 Poruka p1 = new Poruka();
                 while (true)
                 {
@@ -45,8 +45,8 @@ namespace ReplicatorSender
                 }
 
 
-
                 Console.WriteLine("Servis je pokrenut na adresi " + address);
+
                 Console.ReadKey();
                 host.Close();
             }
