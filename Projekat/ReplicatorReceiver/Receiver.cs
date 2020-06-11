@@ -78,7 +78,7 @@ namespace ReplicatorReceiver
                 PosaljiDS4(poruka);
             }
 
-            Console.WriteLine("Primio poruku: " + poruka.Code + ";" + poruka.Vrijednost);
+            //Console.WriteLine("Primio poruku: " + poruka.Code + ";" + poruka.Vrijednost);
         }
 
         //public bool DS1Spreman = false;
@@ -88,7 +88,7 @@ namespace ReplicatorReceiver
             {
                 if (digital.Count > 0)
                 {
-                    string adresa = "net.tcp://localhost:6002/IPosaljiDS1";
+                    string adresa = "net.tcp://localhost:8002/IPosaljiDS1";
                     NetTcpBinding binding1 = new NetTcpBinding();
 
                     ChannelFactory<IPosaljiDS1> kanal = new ChannelFactory<IPosaljiDS1>(binding1, adresa);
@@ -123,7 +123,7 @@ namespace ReplicatorReceiver
             {
                 if (analog.Count > 0)
                 {
-                    string adresa = "net.tcp://localhost:6002/IPosaljiDS1";
+                    string adresa = "net.tcp://localhost:8002/IPosaljiDS1";
                     NetTcpBinding binding1 = new NetTcpBinding();
 
                     ChannelFactory<IPosaljiDS1> kanal = new ChannelFactory<IPosaljiDS1>(binding1, adresa);
@@ -162,7 +162,7 @@ namespace ReplicatorReceiver
             {
                 if (limitset.Count > 0)
                 {
-                    string adresa = "net.tcp://localhost:6002/IPosaljiDS1";
+                    string adresa = "net.tcp://localhost:8003/IPosaljiDS1";
                     NetTcpBinding binding1 = new NetTcpBinding();
 
                     ChannelFactory<IPosaljiDS1> kanal = new ChannelFactory<IPosaljiDS1>(binding1, adresa);
@@ -172,14 +172,14 @@ namespace ReplicatorReceiver
                     foreach (Poruka por in custom)
                     {
                         hc.NizPoruka.Add(por);
-                        digital.Remove(por);
+                        custom.Remove(por);
                         break;
                     }
 
                     foreach (Poruka por in limitset)
                     {
                         hc.NizPoruka.Add(por);
-                        analog.Remove(por);
+                        limitset.Remove(por);
                         break;
                     }
 
@@ -197,7 +197,7 @@ namespace ReplicatorReceiver
             {
                 if (custom.Count > 0)
                 {
-                    string adresa = "net.tcp://localhost:6002/IPosaljiDS1";
+                    string adresa = "net.tcp://localhost:8003/IPosaljiDS1";
                     NetTcpBinding binding1 = new NetTcpBinding();
 
                     ChannelFactory<IPosaljiDS1> kanal = new ChannelFactory<IPosaljiDS1>(binding1, adresa);
@@ -207,14 +207,14 @@ namespace ReplicatorReceiver
                     foreach (Poruka por in custom)
                     {
                         hc.NizPoruka.Add(por);
-                        digital.Remove(por);
+                        custom.Remove(por);
                         break;
                     }
 
                     foreach (Poruka por in limitset)
                     {
                         hc.NizPoruka.Add(por);
-                        analog.Remove(por);
+                        limitset.Remove(por);
                         break;
                     }
 
@@ -230,7 +230,7 @@ namespace ReplicatorReceiver
 
             Console.WriteLine("Primio poruku: " + poruka.Code + ";" + poruka.Vrijednost);
 
-           
+
         }
         public void PosaljiDS3(Poruka poruka)
         {
@@ -238,7 +238,7 @@ namespace ReplicatorReceiver
             {
                 if (multiplenode.Count > 0)
                 {
-                    string adresa = "net.tcp://localhost:6002/IPosaljiDS1";
+                    string adresa = "net.tcp://localhost:8004/IPosaljiDS1";
                     NetTcpBinding binding1 = new NetTcpBinding();
 
                     ChannelFactory<IPosaljiDS1> kanal = new ChannelFactory<IPosaljiDS1>(binding1, adresa);
@@ -248,14 +248,14 @@ namespace ReplicatorReceiver
                     foreach (Poruka por in singlenode)
                     {
                         hc.NizPoruka.Add(por);
-                        digital.Remove(por);
+                        singlenode.Remove(por);
                         break;
                     }
 
                     foreach (Poruka por in multiplenode)
                     {
                         hc.NizPoruka.Add(por);
-                        analog.Remove(por);
+                        multiplenode.Remove(por);
                         break;
                     }
 
@@ -273,7 +273,7 @@ namespace ReplicatorReceiver
             {
                 if (singlenode.Count > 0)
                 {
-                    string adresa = "net.tcp://localhost:6002/IPosaljiDS1";
+                    string adresa = "net.tcp://localhost:8004/IPosaljiDS1";
                     NetTcpBinding binding1 = new NetTcpBinding();
 
                     ChannelFactory<IPosaljiDS1> kanal = new ChannelFactory<IPosaljiDS1>(binding1, adresa);
@@ -283,14 +283,14 @@ namespace ReplicatorReceiver
                     foreach (Poruka por in singlenode)
                     {
                         hc.NizPoruka.Add(por);
-                        digital.Remove(por);
+                        singlenode.Remove(por);
                         break;
                     }
 
                     foreach (Poruka por in multiplenode)
                     {
                         hc.NizPoruka.Add(por);
-                        analog.Remove(por);
+                        multiplenode.Remove(por);
                         break;
                     }
 
@@ -305,7 +305,7 @@ namespace ReplicatorReceiver
             }
             Console.WriteLine("Primio poruku: " + poruka.Code + ";" + poruka.Vrijednost);
 
-            
+
 
         }
         public void PosaljiDS4(Poruka poruka)
@@ -314,7 +314,7 @@ namespace ReplicatorReceiver
             {
                 if (source.Count > 0)
                 {
-                    string adresa = "net.tcp://localhost:6002/IPosaljiDS1";
+                    string adresa = "net.tcp://localhost:8005/IPosaljiDS1";
                     NetTcpBinding binding1 = new NetTcpBinding();
 
                     ChannelFactory<IPosaljiDS1> kanal = new ChannelFactory<IPosaljiDS1>(binding1, adresa);
@@ -324,14 +324,14 @@ namespace ReplicatorReceiver
                     foreach (Poruka por in consumer)
                     {
                         hc.NizPoruka.Add(por);
-                        digital.Remove(por);
+                        consumer.Remove(por);
                         break;
                     }
 
                     foreach (Poruka por in source)
                     {
                         hc.NizPoruka.Add(por);
-                        analog.Remove(por);
+                        source.Remove(por);
                         break;
                     }
 
@@ -349,7 +349,7 @@ namespace ReplicatorReceiver
             {
                 if (consumer.Count > 0)
                 {
-                    string adresa = "net.tcp://localhost:6002/IPosaljiDS1";
+                    string adresa = "net.tcp://localhost:8005/IPosaljiDS1";
                     NetTcpBinding binding1 = new NetTcpBinding();
 
                     ChannelFactory<IPosaljiDS1> kanal = new ChannelFactory<IPosaljiDS1>(binding1, adresa);
@@ -359,18 +359,18 @@ namespace ReplicatorReceiver
                     foreach (Poruka por in consumer)
                     {
                         hc.NizPoruka.Add(por);
-                        digital.Remove(por);
+                        consumer.Remove(por);
                         break;
                     }
 
                     foreach (Poruka por in source)
                     {
                         hc.NizPoruka.Add(por);
-                        analog.Remove(por);
+                        source.Remove(por);
                         break;
                     }
 
-                    CollectionDescription cd = new CollectionDescription(++brojac, EnumDataSet.DataSet1, hc);
+                    CollectionDescription cd = new CollectionDescription(++brojac, EnumDataSet.DataSet4, hc);
 
                     LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
 
@@ -380,9 +380,9 @@ namespace ReplicatorReceiver
                 }
             }
 
-            Console.WriteLine("Primio poruku: " + poruka.Code+";"+poruka.Vrijednost);
+            Console.WriteLine("Primio poruku: " + poruka.Code + ";" + poruka.Vrijednost);
 
-            
+
 
 
         }
