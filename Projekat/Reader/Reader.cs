@@ -45,82 +45,105 @@ namespace Reader
                     poruka2 = p;
                 }
             }
-
+            List<int> NoveVrijednosti = new List<int>();
+            string s = "";
             if (cd.Dataset == EnumDataSet.DataSet1)
             {
-                if (dbContext.DS1.Count() == 0)
+                List<Ds1Model> p = dbContext.DS1.ToList();
+                if (p.Count() == 0)
                 {
                     Ds1Model ds1Model = new Ds1Model(cd.Id, DateTime.Now.ToString(), poruka2.Vrijednost, poruka1.Vrijednost);
                     dbContext.DS1.Add(ds1Model);
                     dbContext.SaveChanges();
+                    s = "Popunjen je Dataset1 sa ID: " + cd.Id + " sa vrijednostima Analog " + poruka1.Vrijednost + " i Digital " + poruka2.Vrijednost;
                 }
                 else
                 {
-                    List<int> NoveVrijednosti = UcitajVrijednosti(poruka1, poruka2);
+                    NoveVrijednosti = UcitajVrijednosti(poruka1, poruka2);
                     if (NoveVrijednosti[2] == 1)
                     {
                         Ds1Model ds1Model = new Ds1Model(cd.Id, DateTime.Now.ToString(), NoveVrijednosti[1], NoveVrijednosti[0]);
                         dbContext.DS1.Add(ds1Model);
                         dbContext.SaveChanges();
                     }
+                    s = "Popunjen je Dataset1 sa ID: " + cd.Id + " sa vrijednostima Analog " + NoveVrijednosti[0] + " i Digital " + NoveVrijednosti[1];
                 }
+                
             }
             else if (cd.Dataset == EnumDataSet.DataSet2)
             {
-                if (dbContext.DS2.Count() == 0)
+                List<Ds2Model> p = dbContext.DS2.ToList();
+                if (p.Count() == 0)
                 {
                     Ds2Model ds2Model = new Ds2Model(cd.Id, DateTime.Now.ToString(), poruka1.Vrijednost, poruka2.Vrijednost);
                     dbContext.DS2.Add(ds2Model);
                     dbContext.SaveChanges();
+                    s = "Popunjen je Dataset2 sa ID: " + cd.Id + " sa vrijednostima Custom " + poruka1.Vrijednost + " i Limitset " + poruka2.Vrijednost;
                 }
                 else
                 {
-                    List<int> NoveVrijednosti = UcitajVrijednosti(poruka1, poruka2);
+                    NoveVrijednosti = UcitajVrijednosti(poruka1, poruka2);
                     if (NoveVrijednosti[2] == 1)
                     {
                         Ds2Model ds2Model = new Ds2Model(cd.Id, DateTime.Now.ToString(), NoveVrijednosti[0], NoveVrijednosti[1]);
                         dbContext.DS2.Add(ds2Model);
                         dbContext.SaveChanges();
                     }
+                    s = "Popunjen je Dataset2 sa ID: " + cd.Id + " sa vrijednostima Custom " + NoveVrijednosti[0] + " i Limitset " + NoveVrijednosti[1];
                 }
+                
             }
             else if (cd.Dataset == EnumDataSet.DataSet3)
             {
-                if (dbContext.DS3.Count() == 0)
+                List<Ds3Model> p = dbContext.DS3.ToList();
+                if (p.Count() == 0)
                 {
                     Ds3Model ds3Model = new Ds3Model(cd.Id, DateTime.Now.ToString(), poruka1.Vrijednost, poruka2.Vrijednost);
                     dbContext.DS3.Add(ds3Model);
                     dbContext.SaveChanges();
+                    s = "Popunjen je Dataset3 sa ID: " + cd.Id + " sa vrijednostima Singlenode " + poruka1.Vrijednost + " i Multiplenode " + poruka2.Vrijednost;
                 }
                 else
                 { 
-                     List<int> NoveVrijednosti = UcitajVrijednosti(poruka1, poruka2);
+                     NoveVrijednosti = UcitajVrijednosti(poruka1, poruka2);
                         if (NoveVrijednosti[2] == 1)
                         {
                             Ds3Model ds3Model = new Ds3Model(cd.Id, DateTime.Now.ToString(), NoveVrijednosti[0], NoveVrijednosti[1]);
                             dbContext.DS3.Add(ds3Model);
                             dbContext.SaveChanges();
                         }
+                     s = "Popunjen je Dataset3 sa ID: " + cd.Id + " sa vrijednostima Singlenode " + NoveVrijednosti[0] + " i Multiplenode " + NoveVrijednosti[1];
                 }
+                
             }
             else
             {
-                if (dbContext.DS4.Count() == 0)
+                List<Ds4Model> p = dbContext.DS4.ToList();
+                if (p.Count() == 0)
                 {
                     Ds4Model ds4Model = new Ds4Model(cd.Id, DateTime.Now.ToString(), poruka1.Vrijednost, poruka2.Vrijednost);
                     dbContext.DS4.Add(ds4Model);
                     dbContext.SaveChanges();
+                    s = "Popunjen je Dataset4 sa ID: " + cd.Id + " sa vrijednostima Consumer " + poruka1.Vrijednost + " i Source " + poruka2.Vrijednost;
                 }
                 else { 
-                List<int> NoveVrijednosti = UcitajVrijednosti(poruka1, poruka2);
+                NoveVrijednosti = UcitajVrijednosti(poruka1, poruka2);
                 if (NoveVrijednosti[2] == 1)
                 {
                     Ds4Model ds4Model = new Ds4Model(cd.Id, DateTime.Now.ToString(), NoveVrijednosti[0], NoveVrijednosti[1]);
                     dbContext.DS4.Add(ds4Model);
                     dbContext.SaveChanges();
                 }
+                    s = "Popunjen je Dataset4 sa ID: " + cd.Id + " sa vrijednostima Consumer " + NoveVrijednosti[0] + " i Source " + NoveVrijednosti[1];
                 }
+               
+
+
+
             }
+
+            LoggerFunkcije.LoggerUpisiUDatotekuPorukuRBaza(s);
+
                Console.WriteLine("Primio sam poruku: id:" + cd.Id + ";dataset:" + cd.Dataset + ";code");
                foreach (Poruka p in cd.HCollection.NizPoruka)
                {

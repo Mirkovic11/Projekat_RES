@@ -78,5 +78,22 @@ namespace Logger
             sw.Close();
             stream.Close();
         }
+
+        public static void LoggerUpisiUDatotekuPorukuRBaza(string s)
+        {
+            string trenutni = Environment.CurrentDirectory;
+            string trenutni1 = Directory.GetParent(trenutni).Parent.FullName;
+            string trenutni2 = Directory.GetParent(trenutni1).Parent.FullName;
+
+
+            FileStream stream = new FileStream(trenutni2 + "/Projekat/Logger/bin/Debug/logovanjebaza.txt", FileMode.Append);
+            StreamWriter sw = new StreamWriter(stream);
+
+            sw.WriteLine(DateTime.Now + " " + s);
+
+            sw.Close();
+            stream.Close();
+
+        }
     }
 }
