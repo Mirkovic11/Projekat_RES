@@ -57,9 +57,15 @@ namespace Writer
 
         static void SlanjePodataka()
         {
-            Console.WriteLine("Unesite putanju tekstualne datoteke iz koje zelite ucitati vrijednosti: ");
+            //Console.WriteLine("Unesite putanju tekstualne datoteke iz koje zelite ucitati vrijednosti:[1-3] ");
             int opcija;
-            opcija = Int32.Parse(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("Unesite putanju tekstualne datoteke iz koje zelite ucitati vrijednosti:[1-3] ");
+                opcija = Int32.Parse(Console.ReadLine());
+                
+            } while (opcija < 1 || opcija > 3);
+           
             string trenutni = Environment.CurrentDirectory;
             string trenutni2 = Directory.GetParent(trenutni).Parent.FullName;
 
