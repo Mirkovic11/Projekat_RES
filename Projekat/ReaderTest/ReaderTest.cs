@@ -62,5 +62,60 @@ namespace ReaderTest
             Assert.AreEqual(ds2[ds2.Count() - 1].VrijednostCustom, CD.HCollection.NizPoruka[0].Vrijednost);
             Assert.AreEqual(ds2[ds2.Count() - 1].VrijednostLimitSet, CD.HCollection.NizPoruka[1].Vrijednost);
         }
+
+        //-------------------------------------
+      // 
+    public static IEnumerable<TestCaseData> CDZAREADER3
+        {
+            get
+            {
+                yield return new TestCaseData(new CollectionDescription(45, EnumDataSet.DataSet3, new HistoricalCollection(new List<Poruka>() { new Poruka(CodeType.CODE_SINGLENODE, 1101), new Poruka(CodeType.CODE_MULTIPLENODE, 1100) })));
+            }
+        }
+
+        [Test]
+        [TestCaseSource("CDZAREADER3")]
+        public void ReaderTestZaUpisUBazu3(CollectionDescription CD)
+        {
+            DataBaseRESContext context = new DataBaseRESContext();
+
+            context.DS3.Add(new Ds3Model(0, DateTime.Now.ToString(), 16, 255));
+
+            IPosaljiDS1 ip = new Reader.Reader();
+
+            ip.PosaljiDS1(CD);
+
+            List<Ds3Model> ds3 = context.DS3.ToList();
+
+            Assert.AreEqual(ds3[ds3.Count() - 1].VrijednostSingleNode, CD.HCollection.NizPoruka[0].Vrijednost);
+            Assert.AreEqual(ds3[ds3.Count() - 1].VrijednostMultipleNode, CD.HCollection.NizPoruka[1].Vrijednost);
+        }
+
+       public static IEnumerable<TestCaseData> CDZAREADER4
+        {
+            get
+            {
+                yield return new TestCaseData(new CollectionDescription(29, EnumDataSet.DataSet4, new HistoricalCollection(new List<Poruka>() { new Poruka(CodeType.CODE_CONSUMER, 1616), new Poruka(CodeType.CODE_SOURCE, 880) })));
+            }
+        }
+
+        [Test]
+        [TestCaseSource("CDZAREADER4")]
+        public void ReaderTestZaUpisUBazu4(CollectionDescription CD)
+        {
+            DataBaseRESContext context = new DataBaseRESContext();
+
+            context.DS4.Add(new Ds4Model(0, DateTime.Now.ToString(), 1010, 255));
+
+            IPosaljiDS1 ip = new Reader.Reader();
+
+            ip.PosaljiDS1(CD);
+
+            List<Ds4Model> ds4 = context.DS4.ToList();
+
+            Assert.AreEqual(ds4[ds4.Count() - 1].VrijednostConsumer, CD.HCollection.NizPoruka[0].Vrijednost);
+            Assert.AreEqual(ds4[ds4.Count() - 1].VrijednostSource, CD.HCollection.NizPoruka[1].Vrijednost);
+        }
+
     }
 }
