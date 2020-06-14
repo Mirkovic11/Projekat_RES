@@ -61,8 +61,35 @@ namespace ReplicatorSenderTest
             stream.Close();
 
         }
-        
+        public static IEnumerable<TestCaseData> VRIJEDNOSTZALOGER1
+        {
+            get
+            {
+                yield return new TestCaseData(new Poruka(CodeType.CODE_CONSUMER, 125));
+            }
+        }
 
+        [Test]
+        [TestCaseSource("VRIJEDNOSTZALOGER1")]
+        public void LoggerUpisiUDatotekuPorukuRSRR(Poruka poruka)
+        {
+            LoggerFunkcije.BrisanjeLoggerDatoteke();
+
+            LoggerFunkcije.LoggerUpisiUDatotekuPorukuRSRR(poruka);
+
+            FileStream stream = new FileStream("../../../Logger/bin/Debug/logovanje.txt", FileMode.Open);
+            StreamReader sr = new StreamReader(stream);
+            string line = "";
+
+            line = sr.ReadLine();
+
+            Assert.AreNotEqual(line, null);
+
+            sr.Close();
+            stream.Close();
+
+        }
+        
         private Poruka BaferPopuni()
         {
             return new Poruka(CodeType.CODE_ANALOG, 105);
@@ -81,14 +108,6 @@ namespace ReplicatorSenderTest
               
         }
 
-        /*public static IEnumerable<TestCaseData> STRINGZATEST
-        {
-            get
-            {
-                yield return new TestCaseData(string );
-            }
-        }*/
-
         [Test]
         [TestCase("CODE_ANALOG;105")]
         public void TestPrijemPorukeOdWritera(string poruka)
@@ -102,6 +121,62 @@ namespace ReplicatorSenderTest
             string porukica = poruka1.Code + ";" + poruka1.Vrijednost;
 
             Assert.AreEqual(porukica, poruka);
+        }
+
+
+
+
+        // ------------
+        public static IEnumerable<TestCaseData> VRIJEDNOSTZALOGERDS1
+        {
+            get
+            {
+                yield return new TestCaseData(new CollectionDescription(1,EnumDataSet.DataSet1, new HistoricalCollection(new List<Poruka>() { new Poruka(CodeType.CODE_ANALOG, 166), new Poruka(CodeType.CODE_DIGITAL, 0) })));
+            }
+        }
+
+        [Test]
+        [TestCaseSource("VRIJEDNOSTZALOGERDS1")]
+        public void LoggerUpisiUDatotekuPorukuRRRTest(CollectionDescription cd)
+        {
+            LoggerFunkcije.BrisanjeLoggerDatoteke();
+
+            LoggerFunkcije.LoggerUpisiUDatotekuPorukuRRR(cd);
+
+            FileStream stream = new FileStream("../../../Logger/bin/Debug/logovanje.txt", FileMode.Open);
+            StreamReader sr = new StreamReader(stream);
+            string line = "";
+
+            line = sr.ReadLine();
+
+            Assert.AreNotEqual(line, null);
+
+            sr.Close();
+            stream.Close();
+
+        }
+
+        //------------------------------------------------
+
+        [Test]
+        [TestCase("s")]
+        public void LoggerUpisiUDatotekuPorukuRBazaTest(string s)
+        {
+            LoggerFunkcije.BrisanjeLoggerDatoteke();
+
+            LoggerFunkcije.LoggerUpisiUDatotekuPorukuRBaza(s);
+
+            FileStream stream = new FileStream("../../../Logger/bin/Debug/logovanjebaza.txt", FileMode.Open);
+            StreamReader sr = new StreamReader(stream);
+            string line = "";
+
+            line = sr.ReadLine();
+
+            Assert.AreNotEqual(line, null);
+
+            sr.Close();
+            stream.Close();
+
         }
     }
 
