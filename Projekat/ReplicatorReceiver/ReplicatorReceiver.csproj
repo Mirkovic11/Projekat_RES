@@ -60,6 +60,10 @@
       <Project>{5416ba3f-a771-4715-a3f8-3ee5f32242dd}</Project>
       <Name>Logger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Reader\Reader.csproj">
+      <Project>{95c35b32-f8f4-45be-b9b0-ebf7b25c0880}</Project>
+      <Name>Reader</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
