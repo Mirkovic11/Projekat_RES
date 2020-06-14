@@ -129,5 +129,119 @@ namespace ReplicatorReceiverTest
         }
 
         //------------------------------------------------------------------------------------------------------------
+        public static IEnumerable<TestCaseData> VRIJEDNOST4
+        {
+            get
+            {
+                yield return new TestCaseData(new Poruka(CodeType.CODE_SINGLENODE, 55));
+            }
+        }
+
+        [Test]
+        [TestCaseSource("VRIJEDNOST4")]
+        public void TestZaReplicatorDS3(Poruka poruka)
+        {
+            ReplicatorReceiver.Receiver receiver = new ReplicatorReceiver.Receiver();
+
+            receiver.PosaljiPorukuRR(poruka);
+
+            Poruka pp = new Poruka();
+
+            foreach (Poruka por in receiver.singlenode)
+            {
+                pp = por;
+                break;
+            }
+
+            Assert.AreEqual(poruka.Vrijednost, pp.Vrijednost);
+            Assert.AreEqual(poruka.Code, pp.Code);
+        }
+
+        //--
+        public static IEnumerable<TestCaseData> VRIJEDNOST5
+        {
+            get
+            {
+                yield return new TestCaseData(new Poruka(CodeType.CODE_MULTIPLENODE, 365));
+            }
+        }
+
+        [Test]
+        [TestCaseSource("VRIJEDNOST5")]
+        public void TestZaReplicatorDS3a(Poruka poruka)
+        {
+            ReplicatorReceiver.Receiver receiver = new ReplicatorReceiver.Receiver();
+
+            receiver.PosaljiPorukuRR(poruka);
+
+            Poruka pp = new Poruka();
+
+            foreach (Poruka por in receiver.multiplenode)
+            {
+                pp = por;
+                break;
+            }
+
+            Assert.AreEqual(poruka.Vrijednost, pp.Vrijednost);
+            Assert.AreEqual(poruka.Code, pp.Code);
+        }
+
+        //-----
+        public static IEnumerable<TestCaseData> VRIJEDNOST6
+        {
+            get
+            {
+                yield return new TestCaseData(new Poruka(CodeType.CODE_CONSUMER, 1234));
+            }
+        }
+
+        [Test]
+        [TestCaseSource("VRIJEDNOST6")]
+        public void TestZaReplicatorDS4(Poruka poruka)
+        {
+            ReplicatorReceiver.Receiver receiver = new ReplicatorReceiver.Receiver();
+
+            receiver.PosaljiPorukuRR(poruka);
+
+            Poruka pp = new Poruka();
+
+            foreach (Poruka por in receiver.consumer)
+            {
+                pp = por;
+                break;
+            }
+
+            Assert.AreEqual(poruka.Vrijednost, pp.Vrijednost);
+            Assert.AreEqual(poruka.Code, pp.Code);
+        }
+
+        //-----
+        public static IEnumerable<TestCaseData> VRIJEDNOST7
+        {
+            get
+            {
+                yield return new TestCaseData(new Poruka(CodeType.CODE_SOURCE, 10858));
+            }
+        }
+
+        [Test]
+        [TestCaseSource("VRIJEDNOST7")]
+        public void TestZaReplicatorDS4a(Poruka poruka)
+        {
+            ReplicatorReceiver.Receiver receiver = new ReplicatorReceiver.Receiver();
+
+            receiver.PosaljiPorukuRR(poruka);
+
+            Poruka pp = new Poruka();
+
+            foreach (Poruka por in receiver.source)
+            {
+                pp = por;
+                break;
+            }
+
+            Assert.AreEqual(poruka.Vrijednost, pp.Vrijednost);
+            Assert.AreEqual(poruka.Code, pp.Code);
+        }
     }
 }
